@@ -136,6 +136,12 @@ class BestHotelDeal:
 def createHotelList(path):
     filePath = path
     hotels = set()
+    try:
+        open(filePath)
+    except:
+        print("Please enter a valid file path.")
+        exit()
+
     with open(filePath) as csvfile:
         CSV = csv.reader(csvfile, delimiter=',')
         for i, row in enumerate(CSV):
@@ -152,6 +158,10 @@ def createHotelList(path):
 
     return hotels
 
+
+if len(sys.argv) < 5:
+    print('Please enter command with the following format: <file_path "hotel_name" check_in_date duration_stay>')
+    exit()
 
 hotelList = createHotelList(sys.argv[1])
 deal = BestHotelDeal(sys.argv[2:], hotelList)
