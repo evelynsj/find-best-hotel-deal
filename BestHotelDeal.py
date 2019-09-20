@@ -46,6 +46,10 @@ class BestHotelDeal:
             if h.name == hotelName:
                 self.hotel = h
                 break
+        
+        if self.hotel == '':
+            print("Please enter a valid hotel name.")
+            exit()
 
     def getDeal(self):
         possibleStartDates = self.getPossibleStartDates()
