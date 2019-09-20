@@ -39,19 +39,22 @@ class Hotel:
 class BestHotelDeal:
     def __init__(self, args, hotelList):  # assumes valid input
         hotelName = args[0]
+        try:
+            self.formatDate(args[1])
+        except ValueError:
+            print('Please enter check in time with the following format: YYYY-MM-DD')
+            exit()
         self.checkIn = args[1]
         try:
-            d = int(args[2])
+            self.duration = int(args[2])
         except ValueError:
             print('Please enter a valid duration stay.')
             exit()
-        self.duration = d
         self.hotel = ''
         for h in hotelList:
             if h.name == hotelName:
                 self.hotel = h
                 break
-        
         if self.hotel == '':
             print("Please enter a valid hotel name.")
             exit()
