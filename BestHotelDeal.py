@@ -40,7 +40,12 @@ class BestHotelDeal:
     def __init__(self, args, hotelList):  # assumes valid input
         hotelName = args[0]
         self.checkIn = args[1]
-        self.duration = int(args[2])
+        try:
+            d = int(args[2])
+        except ValueError:
+            print('Please enter a valid duration stay.')
+            exit()
+        self.duration = d
         self.hotel = ''
         for h in hotelList:
             if h.name == hotelName:
